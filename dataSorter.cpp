@@ -45,7 +45,6 @@ int dataSorter::vectorsInit(bool show){
     //! 58 : 
     //! 10 /n 
     //! -1 EOF    
-
     ch = fgetc(ptrTxt) ;
     do{
     //! получаем фамилию 

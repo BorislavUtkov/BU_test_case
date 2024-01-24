@@ -20,7 +20,6 @@ private:
     char tmpName[MAXLENGTHNAME +1];         //! буфер для имени соответсвующей длины
     char tmpSurname[MAXLENGTHSURNAME +1];   //! буфер для фамилии соответсвующей длины
 
-
 public:
 
     /*
