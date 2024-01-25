@@ -78,13 +78,42 @@ int dataSorter::vectorsInit(bool show){
         tmpPnone[j++] = '\0';
         pnones.push_back(tmpPnone);
         if (show) cout << pnones.back() <<endl;
+
+        //todo
+        //tmp[0]=0;
+        // for ( j = 0; tmp[j] != 58 ; j++){
+        //     tmp[j]=fgetc(ptrTxt);
+        // }
+        //tmp[j] ='\0';
+        
     }while (ch != -1);
 
     return 0;
 } 
-
+    int dataSorter::menu(){
+        int i=0;
+        printf( "Choose a type of sort\n "
+                "1 - sort by name        "
+                "2 - sort by surname     "
+                "3 - sort by phone number"
+                "0 - exit                "
+                "Enter number: ");
+        scanf("%d", &i);
+        if (i >= 0 && i <= 3) return i;
+        else printf ("err"); //todo
+    }
     void dataSorter::makeSort(){
         vectorsInit(1);
+        menu();
+        switch (menu())
+        {
+        case 1:
+            //SortByName
+            break;
+        
+        default:
+            break;
+        }
     }
 
 int main(){
