@@ -97,32 +97,14 @@ int dataSorter::vectorsInit(bool show){
         } while (i >= 0 && i <= 3); 
         
     }
-    void dataSorter::sortByName(){
-        sortResult = new int [numOfRecords];
-
-    }
-
-    void dataSorter::makeSort(){
+    void dataSorter::makeSort(){// сделать входной параметр определяющий признак сортировки
         vectorsInit(1);
-        switch (menu())
-        {
-        case 1:
-            // sortByName();
-            break;
-        case 2:
-            // sortBySurname();
-            break;
-        case 3:
-            // sortByPhone();
-            break;
-        
-        default:
-            break;
-        }
+        sortResult = new int [numOfRecords];
     }
 
 int main(){
     dataSorter sortExample;
+    sortExample.vectorsInit();
     sortExample.makeSort();
     return 0;
 }
