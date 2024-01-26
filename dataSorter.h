@@ -7,6 +7,7 @@ using namespace std;
 
 class dataSorter{
 private:
+    FILE * ptrTxt;                        
     const char* pathTxt = "db.txt";         //! путь до файла с данными
     static const int MAXLENGTHNAME = 8;     //! максимальная длина имени 
     static const int MAXLENGTHSURNAME = 8;  //! максимальная длина фамилии
@@ -16,31 +17,28 @@ private:
     vector<string> pnones;                  //! вектор телефонных номеров
     int ch;                                 //! последний полученный из файла символ
     int j;                                  //! счетчик для for'а
-    char tmpPnone[MAXLENGTHPHONE +1];       //! буфер для имени соответсвующей длины
-    char tmpName[MAXLENGTHNAME +1];         //! буфер для имени соответсвующей длины
-    char tmpSurname[MAXLENGTHSURNAME +1];   //! буфер для фамилии соответсвующей длины
+    int numOfRecords;                       //! количество записей в векторах
+    int *sortResult;                        //! дин.массив с результатом сортировки
+    char tmpPnone[MAXLENGTHPHONE + 1];      //! буфер для имени соответсвующей длины
+    char tmpName[MAXLENGTHNAME + 1];        //! буфер для имени соответсвующей длины
+    char tmpSurname[MAXLENGTHSURNAME + 1];  //! буфер для фамилии соответсвующей длины
 
 public:
 
     /*
-    @brief копирование данных файла в соответсвующие вектора
-    @return 0 - всё ок, 1 - ошибка открытия файла
-    */
-    int vectorsInit(bool show); 
-    /*
-    @brief Отсортировать записи по фамилии
+    @brief вывод записей отсортированных по фамилии
     */
     void sortBySurname();
     /*
-    @brief Отсортировать записи по Имени
+    @brief вывод записей отсортированных по имени
     */
     void sortByName();
     /*
-    @brief Отсортировать записи по телефону
+    @brief вывод записей отсортированных по телефону
     */
     void sortByPohne();
     /*
-    @brief Главная функция включающая в себя всю логику
+    @brief Главная функция 
     */
     void makeSort();
     /*
@@ -48,14 +46,13 @@ public:
     @return Выбранный вариант сортировки
     */
     int menu();
+    /*
+    @brief копирование данных файла в соответсвующие вектора
+    @param show флаг для вывода считанных значений
+    @return 0 - всё ок, 1 - ошибка открытия файла
+    */
+    int vectorsInit(bool show); 
+
     dataSorter();
-    ~dataSorter();
+    
 };
-
-dataSorter::dataSorter()
-{
-}
-
-dataSorter::~dataSorter()
-{
-}
