@@ -14,17 +14,28 @@ private:
     static const int MAXLENGTHPHONE = 8;    //! максимальная длина телефона
     vector<string> names;                   //! вектор имён 
     vector<string> surnames;                //! вектор фамилий 
-    vector<string> pnones;                  //! вектор телефонных номеров
+    vector<string> phones;                  //! вектор телефонных номеров 
+    string tmp;                             //! временная переменная хранящяя промежуточное значение при сортировке
     int ch;                                 //! последний полученный из файла символ
     int j;                                  //! счетчик для for'а
-    int numOfRecords;                       //! количество записей в векторах
-    int *sortResult;                        //! дин.массив с результатом сортировки
+    int i;                                  //! счетчик для for'а, буфер для вводимого числа
+    size_t m;                               //! счетчик для for'а
     char tmpPnone[MAXLENGTHPHONE + 1];      //! буфер для имени соответсвующей длины
     char tmpName[MAXLENGTHNAME + 1];        //! буфер для имени соответсвующей длины
     char tmpSurname[MAXLENGTHSURNAME + 1];  //! буфер для фамилии соответсвующей длины
-
+    bool moved;                             //! флаг смены элементов для функции сортировки
+protected:
+    /*
+    @brief меняет местами соседние элементы вектора в каждом из векторов
+    @para N позиция переставляемого элемента
+    @para reverse 1 - по убыванию, 0 - по возрастанию
+    */
+    void stepOfSort(int N, bool reverse);
 public:
-
+    /*
+    @brief вывод записей как они отсортированы на текущий момент
+    */
+    void showVectors();
     /*
     @brief вывод записей отсортированных по фамилии
     */
@@ -36,11 +47,12 @@ public:
     /*
     @brief вывод записей отсортированных по телефону
     */
-    void sortByPohne();
+    void sortByPhone();
     /*
-    @brief Главная функция 
+    @brief Вывод отсортированных данных
+    @param type по какому признаку сортировка (1-имя, 2-фамилия, 3-телефон)
     */
-    void makeSort();
+    int makeSort(int type);
     /*
     @brief Вывод ткестового меню
     @return Выбранный вариант сортировки
@@ -54,5 +66,4 @@ public:
     int vectorsInit(bool show); 
 
     dataSorter();
-    
 };
